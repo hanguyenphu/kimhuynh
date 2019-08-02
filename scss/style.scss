@@ -1,13 +1,17 @@
 @import 'bootstrap/bootstrap';
 @import 'bootstrap/variables';
 
-$font-primary: 'Poppins',Arial, sans-serif;
+$font-primary: 'Work Sans',Arial, sans-serif;
+$font-secondary: 'Playfair Display', serif;
+$font-tertiary: 'Pacifico', cursive;
 
 $white: #fff;
 $black: #000000;
-// $darken: #3a4348;
+$darken: #232931;
 
-$primary: #fcd307;
+$primary: #f18c8e;
+$secondary: #563b4c;
+
 
 
 @mixin border-radius($radius) {
@@ -31,10 +35,10 @@ html {
 body {
 	font-family: $font-primary;
 	background: $white;
-	font-size: 15px;
+	font-size: 16px;
 	line-height: 1.8;
-	font-weight: 300;
-	color: lighten($black,40%);
+	font-weight: 400;
+	color: lighten($black,60%);
 	&.menu-show {
 		overflow: hidden;
 		position: fixed;
@@ -62,112 +66,74 @@ h1, h2, h3, h4, h5,
 	color: $primary!important;
 }
 
+
 .ftco-navbar-light {
-	background: transparent!important;
-	// position: absolute;
-	// right: 0;
-	// left: 0;
-	// top: 20px;
+	background: transparent !important;
+	position: absolute;
+	top: 0px;
+	left: 0;
+	right: 0;
 	z-index: 3;
 	padding: 0;
 	@include media-breakpoint-down(md) {
 		background: $black!important;
 		position: relative;
-		padding: 0 10px;
-		.navbar-brand{
-			font-size: 20px;
+		top: 0;
+		padding: 10px 15px;
+	}
+	.navbar-brand {
+		color: $black;
+		z-index: 0;
+		&:hover, &:focus{
+			color: $black;
+		}
+		@include media-breakpoint-down(md){
+			color: $white;
 		}
 	}
 
-	.navbar-brand {
-		color: $white;
-		background: $black;
-		@include media-breakpoint-up(lg){
-			padding: 30px 30px 30px 0;
-			position: relative;
-			&:after{
-				position: absolute;
-				top: 0;
-				right: 100%;
-				bottom: 0;
-				content: '';
-				width: 360%;
-				background: $black;
-			}
-		}
-		&.navbar-black{
-			color: $white;
-			@include media-breakpoint-down(md){
-				color: $white;
-				font-size: 20px;
-			}
-		}
-	}
-	
 	.navbar-nav {
 		@include media-breakpoint-down(md){
-			padding: 15px 0;
+			padding-bottom: 10px;
 		}
 		> .nav-item {
 			> .nav-link {
-				font-size: 16px;
-				padding-top: .8rem;
-				padding-bottom: .8rem;
+				font-size: 12px;
+				padding-top: 1.8rem;
+				padding-bottom: 1.8rem;
 				padding-left: 20px;
 				padding-right: 20px;
-				color: lighten($black,30%);
 				font-weight: 500;
-				position: relative;
-				z-index: 0;
-				@include media-breakpoint-up(lg){
-					&:after{
-						position: absolute;
-						bottom:18px;
-						left: 0;
-						right: 0;
-						width: 70%;
-						height: 6px;
-						content: '';
-						background: $primary;
-						margin: 0 auto;
-						z-index: -1;
-						opacity: 0;
-						@include transition(.3s);
-					}
-				}
-				@include media-breakpoint-down(md){
-					padding-top: .6rem;
-					padding-bottom: .6rem;
-					color: $white;
-					padding-left: 0;
-					padding-right: 0;
-				}
+				color: $black;
+				letter-spacing: 1px;
+				text-transform: uppercase;
 				&:hover {
-					color: $black;
-					@include media-breakpoint-down(md){
-						color: $primary;
-					}
-					&:after{
-						opacity: 1;
-					}
+					color: $primary;
 				}
 				opacity: 1!important;
+				@include media-breakpoint-down(md){
+					padding-left: 0;
+					padding-right: 0;
+					padding-top: .9rem;
+					padding-bottom: .9rem;
+					color: rgba(255,255,255,.7);
+					&:hover{
+						color: $white;
+					}
+				}
 			}
 
 			.dropdown-menu{
 				border: none;
 				background: $white;
-				@include transition(.3s);
-				border-radius: (0);
 				-webkit-box-shadow: 0px 10px 34px -20px rgba(0,0,0,0.41);
 				-moz-box-shadow: 0px 10px 34px -20px rgba(0,0,0,0.41);
 				box-shadow: 0px 10px 34px -20px rgba(0,0,0,0.41);
 				.dropdown-item{
-					font-size: 13px;
-					color: rgba(0,0,0,.7);
-					&:hover,&:focus{
-						color: $black;
+					font-size: 14px;
+					&:hover, &:focus{
 						background: transparent;
+						color: $black;
 					}
 				}
 			}
@@ -196,56 +162,37 @@ h1, h2, h3, h4, h5,
 			}
 			&.cta {
 				> a {
-					color: $white;
-					border: 1px solid rgba(255,255,255,.4);
-					padding-top: .5rem;
-					padding-bottom: .5rem;
-					padding-left: 20px;
-					padding-right: 20px;
-					margin-top: 4px;
-					@include border-radius(30px);
-					span {
-						display: inline-block;
+					color: $black;
+					@include media-breakpoint-down(sm){
+						padding-left: 15px;
+						padding-right: 15px;
+					}
+					@include media-breakpoint-down(md){
 						color: $white;
-					}
-					&:hover{
 						background: $primary;
-						border: 1px solid $primary;
-					}
-				}
-				&.cta-colored {
-					span {
-						border-color: $primary;
 					}
 				}
 			}
 			&.active {
 				> a {
-					color: $black;
-					&:after{
-						opacity: 1;
-					}
-				}
-			}
-			@include media-breakpoint-down(md){
-				&.active{
-					> a{
-						color: $primary;
+					color: $primary;
+					@include media-breakpoint-down(md){
+						color: $white;
 					}
 				}
 			}
 		}
 	}
+	
 	.navbar-toggler {
 		border: none;
 		color: rgba(255,255,255,.5)!important;
 		cursor: pointer;
-		padding-right: 15px;
+		padding-right: 0;
 		text-transform: uppercase;
 		font-size: 16px;
 		letter-spacing: .1em;
-		padding: 0;
-		&:hover,&:focus{
+		&:focus{
 			outline: none !important;
 		}
 	}
@@ -258,18 +205,10 @@ h1, h2, h3, h4, h5,
 		margin-top: -130px;
 		background: $white!important;
 		box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
-		padding: 0;
 		.nav-item {
-			.nav-link{
-				@include media-breakpoint-up(lg){
-					&:after{
-						bottom: 19px !important;
-					}
-				}
-			}
 			&.active {
 				> a {
-					color: $black!important;
+					color: $primary!important;
 				}
 			}
 			&.cta {
@@ -277,12 +216,7 @@ h1, h2, h3, h4, h5,
 					color: $white !important;
 					background: $primary;
 					border: none !important;
-					padding-top: .5rem!important;
-					padding-bottom: .5rem !important;
-					padding-left: 20px;
-					padding-right: 20px;
-					margin-top: 6px !important;
-					@include border-radius(30px);
+					 
 					span {
 						display: inline-block;
 						color: $white !important;
@@ -322,6 +256,7 @@ h1, h2, h3, h4, h5,
 			text-transform: uppercase;
 			font-size: 16px;
 			letter-spacing: .1em;
+
 		}
 		.nav-link {
 			padding-top: .9rem!important;
@@ -340,216 +275,28 @@ h1, h2, h3, h4, h5,
 		}
 
 		.navbar-brand {
-			color: $white;
-			font-size: 20px;
-			@include media-breakpoint-up(lg){
-				padding: 15px 40px 15px 0;
-			}
-			span{
-				color: $primary;
-			}
+			color: $black;
 		}
 	}
 }
 
 .navbar-brand {
+	font-size: 20px;
 	font-weight: 900;
-	font-size: 24px;
-	position: relative;
+	// text-transform: uppercase;
+	font-family: $font-tertiary;
 }
 
 
-
-
-.hero-wrap{
-	position: relative;
-	height: 750px;
-	background: $black;
-	.forth{
-		width: 20%;
-		height: 750px;
-		@include media-breakpoint-down(sm){
-			width: 0%;
-		}
-		.bg-after{
-			position: relative;
-			width: 100%;
-			height: 100%;
-			@include media-breakpoint-up(lg){
-				&:after{
-					position: absolute;
-					top: -100%;
-					left: 0;
-					right: 0;
-					width: 100%;
-					height: 100%;
-					content: '';
-					background: $black;
-				}
-			}
-		}
-		.text{
-			position: absolute;
-			top: 50%;
-			left: 0;
-			right: 0;
-			// max-width: 1140px;
-			width: 100%;
-			padding: 0 15px;
-			margin: 0 auto;
-			transform: translateY(-50%);
-			color: $white;
-			z-index: 1;
-			@include media-breakpoint-up(md){
-				padding-left: 3em;
-			}
-			.desc{
-				width: 40%;
-				@include media-breakpoint-down(sm){
-					width: 100%;
-					.subheading{
-						color: $white;
-					}
-					h1,h2{
-						color: $white;
-					}
-				}
-			}
-			.subheading{
-				font-size: 14px;
-				font-weight: 600;
-				color: rgba(255,255,255,1);
-				text-transform: uppercase;
-				letter-spacing: 3px;
-				display: inline-block;
-				margin-bottom: 10px;
-				position: relative;
-				z-index: 0;
-				&:after{
-					position: absolute;
-					bottom: 0;
-					left: 0;
-					right: 0;
-					height: 10px;
-					width: 100%;
-					content: '';
-					background: $primary;
-					z-index: -1;
-				}
-			}
-			h1{
-				font-weight: 800;
-				font-size: 90px;
-				color: $white;
-				line-height: 1.2;
-				@include media-breakpoint-down(md){
-					font-size: 50px;
-				}
-			}
-			h2{
-				font-size: 28px;
-				font-weight: 600;
-				color: $white;
-			}
-			.btn-custom{
-				position: relative;
-				border: none;
-				color: $white;
-				z-index: 0;
-				letter-spacing: 1px;
-				&:after{
-					position: absolute;
-					top: 0;
-					right: -40px;
-					bottom: 0;
-					content: '';
-					width: 100%;
-					background: darken($primary,4%);
-					z-index: -1;
-				}
-				&:before{
-					position: absolute;
-					top: 50%;
-					right: -30px;
-					width: 30px;
-					height: 2px;
-					content: '';
-					transform: translateY(-50%);
-					background: rgba(255,255,255,.8);
-				}
-			}
-		}
+.hero{
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top center;
+	@include media-breakpoint-down(lg){
+		background-position: top center !important;
 	}
-	.third{
-		width: 80%;
-		position: relative;
-		height: 750px;
-		@include media-breakpoint-down(sm){
-			width: 100%;
-		}
-		.icon{
-			position: absolute;
-			top: 65%;
-			left: 0;
-			width: 100px;
-			height: 100px;
-			background: $white;
-			transform: translateY(-50%);
-			margin-left: -50px;
-			z-index: 1;
-			animation: pulse 2s infinite;
-			@include border-radius(50%);
-			@include media-breakpoint-down(sm){
-				top: 80%;
-			}
-			span{
-				color: $primary;
-			}
-		}
-	}
+		/* style */
 }
-
-.hero-wrap-2{
-	height: 650px;
-	background-position: center center;
-	position: relative;
-	.overlay{
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		background: $black;
-		opacity: .2;
-	}
-}
-.text-bread{
-	height: 650px;
-	.text{
-		.bread{
-			font-weight: 800;
-			font-size: 60px;
-			color: $white;
-		}
-		.breadcrumbs{
-			font-weight: 500;
-			span{
-				color: $white;
-				a{
-					color: $white;
-				}
-			}
-		}
-	}
-}
-
-
-.video-hero{
-	height: 750px;
-}
-
-
-
 //OWL CAROUSEL
 .owl-carousel {
 	position: relative;
@@ -557,32 +304,6 @@ h1, h2, h3, h4, h5,
 		opacity: .4;
 		&.active {
 			opacity: 1;
-		}
-	}
-	
-	.owl-nav {
-		position: absolute;
-		top: 50%;
-		width: 100%;
-		.owl-prev,
-		.owl-next {
-			position: absolute;
-			transform: translateY(-50%);
-			margin-top: -10px;
-			color: $primary !important;
-			@include transition(.7s);
-			span {
-				&:before {
-					font-size: 30px;
-				}
-			}
-			opacity: 0;
-		}
-		.owl-prev {
-			left: 0;
-		}
-		.owl-next {
-			right: 0;
 		}
 	}
 	.owl-dots {
@@ -603,7 +324,7 @@ h1, h2, h3, h4, h5,
 				width: 14px;
 				height: 14px;
 				content: '';
-				border:1px solid lighten($black, 90%);
+				border:1px solid rgba(255,255,255,.3);
 				@include border-radius(50%);
 			}	
 			&:hover, &:focus{
@@ -614,47 +335,805 @@ h1, h2, h3, h4, h5,
 			}
 		}
 	}
-	&:hover{
-		.owl-nav{
+	&.home-slider {
+		position: relative;
+		height: 750px;
+		z-index: 0;
+		@include media-breakpoint-down(md){
+			height: 600px;
+		}
+		.slider-item {
+			height: 750px;
+			position: relative;
+			z-index: 0;
+			@include media-breakpoint-down(md){
+				height: 600px;
+			}
+			@include media-breakpoint-down(lg){
+				background-position: center center !important;
+			}
+			.overlay{
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				// background: $primary;
+				opacity: 1;
+				z-index: -1;
+			}
+			.slider-text {
+				height: 750px;
+				z-index: 0;
+				overflow: hidden;
+				@include media-breakpoint-down(md){
+					text-align: center;
+					height: 600px;
+				}
+				.one-third{
+					width: 65%;
+					position: relative;
+					z-index: -1;
+					background-position: center center;
+					.overlay{
+						position: absolute;
+						top: 0;
+						bottom: 0;
+						left: 0;
+						right: 0;
+						background: $black;
+						opacity: 0;
+					}
+					@include media-breakpoint-down(md){
+						width: 100%;
+						z-index: 0;
+						.overlay{
+							opacity: .3;
+						}
+						&:after{
+							opacity: 0;
+						}
+					}
+				}
+				.one-forth{
+					position: relative;
+					height: 750px;
+					@include media-breakpoint-up(lg){
+						position: absolute;
+						top: 0;
+						left: 0;
+						bottom: 0;
+						right: 0;
+						width: 1200px;
+						margin: 0 auto;
+					}
+					@include media-breakpoint-down(lg){
+						width: 100%;
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+						bottom: 0;
+						z-index: 1;
+						padding: 1em;
+					}
+					@include media-breakpoint-down(md){
+						height: 600px;
+					}
+					.text{
+						position: relative;
+						&:after{
+							position: absolute;
+							top: -120px;
+							left: 50px;
+							right: 0;
+							bottom: 0;
+							content: '';
+							opacity: 0;
+							width: 80px;
+							background: transparent;
+							height: 120px;
+							border: 5px solid $primary;
+							// border-bottom: none;
+							z-index: -1;
+							@include media-breakpoint-up(lg){
+								opacity: 1;
+							}
+						}
+						@include media-breakpoint-up(lg){
+							position: absolute;
+							top: 50%;
+							left: 0;
+							transform: translateY(-50%);
+							right: 0;
+							// width: 1200px;
+							max-width: 50%;
+							padding-left: 45px;
+							padding-right: 3em;
+						}
+					}
+				}
+				.subheading{
+					color: $black;
+					font-weight: 700;
+					font-size: 16px;
+					letter-spacing: 4px;
+					text-transform: uppercase;
+					display: inline-block;
+					color: $black;
+				}
+				.text{
+					position: relative;
+					z-index: 1;
+				}
+				h1 {
+					font-size: 60px;
+					color: $black;
+					line-height: 1.2;
+					font-weight: 700;
+					span{
+						font-weight: 700;
+						color: darken($primary,10%);
+					}
+					@include media-breakpoint-down(md) {
+						font-size: 50px;
+					}
+					@include media-breakpoint-down(sm) {
+						font-size: 40px;
+					}
+				}
+				p {
+					color: rgba(0,0,0,.8);
+					font-weight: 400;
+					@include media-breakpoint-down(md) {
+						color: rgba(0,0,0,.7);
+						font-size: 20px;
+					}
+				}
+				.btn-custom{
+					color: $white;
+					background: $primary;
+					padding: 10px 20px;
+				}
+			}
+		}
+		.owl-nav {
+			position: absolute;
+			bottom: 60px !important;
+			left: 0;
+			right: 0;
+			// max-width: 1200px;
+			margin: 0 auto;
+			@include media-breakpoint-down(md){
+				display: none;
+			}
 			.owl-prev,
-			.owl-next{
+			.owl-next {
+				position: absolute;
+				width: 60px;
+				height: 60px;
+				// color: $primary !important;
+				background: $white !important;
+				@include transition(.7s);
+				span {
+					&:before {
+						font-size: 20px;
+						margin-top: 7px;
+						color: $black;
+					}
+				}
 				opacity: 1;
 			}
 			.owl-prev {
-				left: -25px;
+				top: 0 !important;
+				right: 0 !important;
+				@include media-breakpoint-up(lg){
+					right: 61px !important;
+				}
+				&:hover, &:focus{
+					background: $black !important;
+					outline: none !important;
+					span {
+						&:before {
+							font-size: 20px;
+							margin-top: 7px;
+							color: $primary;
+						}
+					}
+				}
 			}
 			.owl-next {
-				right: -25px;
+				top: 0 !important;
+				right: 0 !important;
+				@include media-breakpoint-up(lg){
+					right: 0 !important;
+				}
+				&:hover, &:focus{
+					background: $black !important;
+					outline: none !important;
+					span {
+						&:before {
+							font-size: 24px;
+							margin-top: 7px;
+							color: $primary;
+						}
+					}
+				}
+			}
+		}
+		.owl-dots {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 40px;
+			width: 100%;
+			text-align: center;
+			@include media-breakpoint-up(lg){
+				display: none;
+			}
+			@include media-breakpoint-down(sm){
+				bottom: 5px;
+			}
+			.owl-dot {
+				width: 10px;
+				height: 10px;
+				margin: 5px;
+				border-radius: 50%;
+				background: rgba(0,0,0,.4);
+				&.active {
+					background: $white;
+				}
 			}
 		}
 	}
 } 
 
 
+.hero-wrap{
+	width: 100%;
+	height: 800px;
+	position: inherit;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top center;
+	@include media-breakpoint-down(lg){
+		background-position: top center !important;
+	}
+	.overlay{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		content: '';
+		opacity: .1;
+		background: $white;
+		height: 800px;
+		@include media-breakpoint-down(lg){
+			opacity: 0;
+		}
+	}
+	&.hero-wrap-2{
+		height: 600px;
+		.overlay{
+			background: $primary;
+			width: 100%;
+			opacity: .3;
+			height: 600px;
+		}
+		.slider-text{
+			height: 600px !important;
+		}
+	}
+}
+
+.slider-text{
+	position: relative;
+	height: 600px;
+	.breadcrumbs{
+		font-size: 16px;
+		margin-bottom: 20px;
+		z-index: 99;
+		font-weight: 600;
+		span{
+			color: rgba(0,0,0,.8);
+			i{
+				color: rgba(0,0,0,.8);
+			}
+			a{
+				color: rgba(0,0,0,1);
+				&:hover, &:focus{
+					color: $primary;
+					i{
+						color: $primary;
+					}
+				}
+			}
+		}
+	}
+	.bread{
+		font-weight: 900;
+		color: $black;
+		font-size: 50px;
+	}
+}
+
+
+//ABOUT
+.img-2{
+	width:100%;
+	position: relative;
+	@include media-breakpoint-down(sm){
+		height: 300px;
+		margin-bottom: 40px;
+	}
+	.icon{
+		width: 80px;
+		height: 80px;
+		background: $white;
+		animation: pulse 2s infinite;
+		@include border-radius(50%);
+		span{
+			color: $primary;
+			font-size: 24px;
+		}
+	}
+}
+.wrap-about{
+	position: relative;
+	@include media-breakpoint-up(lg){
+		padding-left: 6em;
+	}
+	@include media-breakpoint-up(md){
+		padding-left: 3em;
+	}
+}
+
+//SERVICES
+.ftco-services{
+	.services-wrap{
+		width: 100%;
+		padding: 25px;
+		border: 1px solid lighten($primary,10%);
+		background: $white;
+		@include transition(.3s);
+		.img{
+			height: 600px;
+			position: relative;
+			z-index: 0;
+			&:after{
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				content: '';
+				background: $primary;
+				opacity: 0;
+				z-index: -1;
+				@include transition(.3s);
+			}
+			.number{
+				h3{
+					margin-left: 0;
+					font-size: 80px;
+					font-weight: 900;
+					font-family: $font-secondary;
+
+				  color: $white;
+				  -webkit-text-fill-color: $white; /* Will override color (regardless of order) */
+				  -webkit-text-stroke-width: 1px;
+				  -webkit-text-stroke-color: $primary;
+				}
+			}
+		}
+		.text{
+			background: $secondary;
+			width: 85%;
+			padding: 0;
+			div{
+				width: 100%;
+				padding: 15px 20px;
+			}
+			.btn-custom{
+				width: calc(100% - 100px);
+				background: darken($secondary,5%);
+				a{
+					color: $white;
+					width: 100%;
+					font-size: 14px;
+					text-transform: uppercase;
+					color: rgba(255,255,255,.8);
+					letter-spacing: 1px;
+				}
+			}
+			h3{
+				font-size: 16px;
+				margin-bottom: 0;
+				font-weight: 600;
+				a{
+					color: $white;
+				}
+			}
+			span{
+				a{
+					color: $white;
+				}
+			}
+		}
+		&:hover, &:focus{
+			.img{
+				&:after{
+					opacity: .5;
+				}
+			}
+			-webkit-box-shadow: 0px 10px 56px -20px rgba(0,0,0,0.13);
+			-moz-box-shadow: 0px 10px 56px -20px rgba(0,0,0,0.13);
+			box-shadow: 0px 10px 56px -20px rgba(0,0,0,0.13);
+		}
+	}
+}
+
+
+//FTCO BOOKING
+.ftco-booking{
+	.one-forth{
+		width: 100%;
+		@include media-breakpoint-down(md){
+			width: 100%;
+		}
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		max-width: 1140px;
+		margin: 0 auto;
+		.text{
+			width: 100%;
+			max-width: 40%;
+			position: relative;
+			z-index: 0;
+			@include media-breakpoint-down(md){
+				max-width: 60%;
+			}
+			@include media-breakpoint-down(sm){
+				max-width: 100%;
+			}
+			.overlay{
+				width: 100%;
+				height: 23%;
+				display: block;
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				content: '';
+				z-index: -1;
+				background: $secondary;
+				margin-bottom: 0;
+				margin-left: -100%;
+				opacity: 1;
+				@include media-breakpoint-down(lg){
+					display: none;
+				}
+			}
+		}
+	}
+	.one-third{
+		width: 62%;
+		border: 1px solid lighten($primary,10%);
+		border-right: none;
+		padding: 25px;
+		padding-right: 0;
+		@include media-breakpoint-down(md){
+			width: 100%;
+			padding-right: 25px;
+			border: 1px solid lighten($primary,10%);
+		}
+	}
+	.img{
+		height: 500px;
+		@include media-breakpoint-down(md){
+			height: 600px;
+		}
+	}
+}
+.appointment-wrap{
+	text-align: center;
+	z-index: 1;
+	background: $white;
+	padding: 50px;
+	padding-bottom: 0;
+	-webkit-box-shadow: 0px 10px 56px -20px rgba(0,0,0,0.13);
+	-moz-box-shadow: 0px 10px 56px -20px rgba(0,0,0,0.13);
+	box-shadow: 0px 10px 56px -20px rgba(0,0,0,0.13);
+	@include media-breakpoint-down(md){
+		padding: 30px;
+	}
+	h3{
+		font-family: $font-secondary;
+		font-weight: 700;
+		color: $secondary;
+	}
+	.subheading{
+		text-transform: uppercase;
+		font-weight: 600;
+		font-size: 12px;
+		color: lighten($secondary,25%);
+		letter-spacing: 1px;
+	}
+}
+.appointment-form{
+	.form-group{
+		position: relative;
+		margin-bottom: 0;
+		input, select{
+			appearance: none;
+			background: transparent !important;
+			color: $secondary !important;
+			font-size: 14px;
+			padding: 0 !important;
+			height: 60px!important;
+			border: none;
+			border-bottom: 1px solid rgba(0,0,0,.1);
+			text-transform: uppercase;
+			font-weight: 500;
+			@include border-radius(0);
+			option{
+				color: $secondary;
+			}
+			&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+			  color: $secondary !important;
+			}
+			&::-moz-placeholder { /* Firefox 19+ */
+			  color: $secondary !important;
+			}
+			&:-ms-input-placeholder { /* IE 10+ */
+			  color: $secondary !important;
+			}
+			&:-moz-placeholder { /* Firefox 18- */
+			  color: $secondary !important;
+			}
+		}
+		.btn-primary{
+			display: block;
+			background: $primary !important;
+			@include border-radius(0);
+			border: none;
+			border-bottom: 1px solid rgba(255,255,255,.4);
+			padding-left: 0;
+			padding-right: 0 !important;
+			color: $white !important;
+			width: 200px;
+			margin: 0 auto;
+			margin-top: 20px;
+		}
+	}
+	.icon {
+		position: absolute;
+		top: 50% !important;
+		right: 0;
+		font-size: 14px;
+		transform: translateY(-50%);
+		color: rgba(0,0,0,.3);
+		@include media-breakpoint-down(sm) {
+			right: 0;
+		}
+	}
+}
+
+
+//PROJECT
+.project{
+	position: relative;
+	width: 100%;
+	display: block;
+	overflow: hidden;
+	z-index: 0;
+	&:after{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		content: '';
+		background: $primary;
+		opacity: 0;
+		z-index: 1;
+		@include transition(.3s);
+	}
+	img{
+		-webkit-transform: scale(1.0);
+		-moz-transform: scale(1.0);
+		-o-transform: scale(1.0);
+		transform: scale(1.0);
+		z-index: -1;
+		@include transition(.6s);
+	}
+	.text{
+		position: absolute;
+		bottom: -100px;
+		left: 0;
+		right: 0;
+		padding: 2em;
+		opacity: 0;
+		z-index: 2;
+		@include transition(.6s);
+		span{
+			font-size: 14px;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			color: rgba(255,255,255,.8);
+		}
+		h3{
+			color: $white;
+			a{
+				color: $white;
+			}
+		}
+		@include media-breakpoint-down(md){
+			opacity: 1;
+			bottom: 0;
+		}
+	}
+	.icon{
+		position: absolute;
+		top: -50px;
+		right: 2em;		
+		width: 50px;
+		height: 50px;
+		bordeR: 1px solid $white;
+		transform: translateY(-50%);
+		@include border-radius(50%);
+		@include transition(.6s);
+		opacity: 0;
+		z-index: 2;
+		span{
+			color: $white;
+			font-size: 20px;
+		}
+		@include media-breakpoint-down(md){
+			opacity: 1;
+			top: 50px;
+		}
+	}
+	&:hover, &:focus{
+		&:after{
+			opacity: .8;
+		}
+		.text{
+			opacity: 1;
+			bottom: 0;
+		}
+		.icon{
+			top: 50px;
+			opacity: 1;
+			// width: 140px;
+			// height: 140px;
+		}
+		img{
+			-webkit-transform: scale(1.2);
+			-moz-transform: scale(1.3);
+			-o-transform: scale(1.3);
+			transform: scale(1.3);
+		}
+	}
+}
+
+//PRICING
+.pricing-entry{
+	// border: 1px solid lighten($black,94%);
+	border: 1px solid lighten($primary,15%);
+	position: relative;
+	@include transition(.3s);
+	@include media-breakpoint-down(sm){
+		margin-bottom: 4em;
+	}
+	>div{
+		padding: 20px;
+		p{
+			margin-bottom: 0;
+		}
+	}
+	h3{
+		font-size: 14px;
+		font-weight: 600;
+		text-transform: uppercase;
+		color: $primary;
+		@include transition(.3s);
+	}
+	p{
+		.price{
+			font-weight: 900;
+			font-size: 28px;
+			color: $secondary;
+			@include transition(.3s);
+		}
+		.per{
+			font-size: 12px;
+		}
+	}
+	ul{
+		margin: 0;
+		padding: 0;
+		li{
+			list-style: none;
+			padding: 10px 20px;
+			&:nth-child(odd){
+				background: lighten($black,98%);
+			}
+		}
+	}
+	.button{
+		position: absolute;
+		bottom: -26px;
+		left: 0;
+		right: 0;
+		margin-bottom: 0;
+		@include transition(.3s);
+		.btn{
+			@include border-radius(30px);
+			@include transition(.3s);
+		}
+	}
+	&:hover, &:focus{
+		margin-top: -10px;
+		border: 1px solid $secondary;
+		.btn{
+			background: $secondary !important;
+			border: 1px solid $secondary !important;
+			color: $white !important;
+		}
+		.price{
+			color: $secondary;
+		}
+		h3{
+			color: $secondary;
+		}
+	}
+}
+
+
+//MISSION
+.ftco-mission{
+	h3{
+		font-weight: 900;
+	}
+}
+
+.container{
+	// max-width: 1110px;
+}
 
 .bg-light {
-	background: #fafafa!important;
+	background: #f7f5f6!important;
 }
 
-.ftco-no-pt{
-	padding-top: 0 !important;
+.bg-primary{
+	background: $primary;
 }
-.ftco-no-pb{
-	padding-bottom: 0 !important;
+
+.bg-black{
+	background: #1e1e1e;
 }
+
 
 //BUTTON
 .btn {
 	cursor: pointer;
 	@include border-radius(30px);
-	box-shadow: none!important;
+	// box-shadow: none!important;
+	-webkit-box-shadow: 0px 24px 36px -11px rgba(0,0,0,0.09);
+	-moz-box-shadow: 0px 24px 36px -11px rgba(0,0,0,0.09);
+	box-shadow: 0px 24px 36px -11px rgba(0,0,0,0.09);
 	&:hover, &:active, &:focus {
 		outline: none;
 	}
 	&.btn-primary {
-		background: $primary;
-		border: 1px solid $primary;
-		color: $white;
+		background: $primary !important;
+		border: 1px solid $primary !important;
+		color: $white !important;
 		&:hover {
 			border: 1px solid $primary;
 			background: transparent;
@@ -671,514 +1150,95 @@ h1, h2, h3, h4, h5,
 			}
 		}
 	}
-	&.btn-white {
-		background: $white;
-		border: 1px solid $white;
-		color: $black;
-		&:hover, &:focus, &:active {
-			border: 1px solid $white;
-			color :$primary;
+	&.btn-black {
+		background: $black !important;
+		border: 1px solid $black !important;
+		color: $white !important;
+		&:hover {
+			border: 1px solid $black !important;
+			background: $black !important;
+			color :$white;
 		}
-		&.btn-outline-white {
-			border-color: rgba($white, .8);
-			background: none;
-			@include border-radius(30px);
-			border-width: 1px;
-			color: $white;
-			&:hover, &:focus, &:active {
-				background: $white;
-				border-color: $white;
-				color: $primary;
+		&.btn-outline-black {
+			border: 1px solid $black;
+			background: transparent;
+			color :$black;
+			&:hover {
+				border: 1px solid transparent;
+				background: $black !important;
+				color :$white;
 			}
 		}
 	}
 }
 
 
-.btn-custom{
-	font-weight: 500;
-	color: darken($primary,10%);
-	border-bottom: 4px solid lighten($primary,4%);
-}
+
 
 //SERVICES
-.ftco-services{
-	.services{
-		display: block;
-		width: 100%;
-		margin-bottom: 40px;
-		@include transition(.3s);
-		.icon{
-			width: 100px;
-			background: transparent;
-			margin: 0 auto;
-			position: relative;
-			z-index: 0;
-			&:after{
-				position: absolute;
-				top: 50%;
-				left: 0;
-				transform:  translateY(-50%);
-				content: '';
-				width: 40px;
-				height: 40px;
-				z-index: -1;
-				background: $primary;
-				@include border-radius(50%);
-			}
-			span{
-				color: lighten($black,40%);
-				font-size: 80px;
-			}
-		}
-		.media-body{
-			width: 100%;
-			h3{
-				font-weight: 500;
-				text-transform: uppercase;
-				letter-spacing: 1px;
-				font-size: 18px;
-			}
-		}
-	}
-}
-//GET A QUOTE
-.getaquote-form{
-	-webkit-box-shadow: 0px 4px 34px -19px rgba(0,0,0,0.38);
-	-moz-box-shadow: 0px 4px 34px -19px rgba(0,0,0,0.38);
-	box-shadow: 0px 4px 34px -19px rgba(0,0,0,0.38);
-	.form-control{
-		background: lighten($black,96%)!important;
-		border: transparent !important;
-		font-size: 14px;
-	}
-	h3{
-		padding: 20px;
-		background: $primary;
-		color: $white;
-		font-size: 24px;
-	}
-	@include media-breakpoint-up(md){
-		// margin-top: -166px;
-	}
-	.wrap{
-		padding: 30px;
-	}
-	.btn-primary{
-		display: block;
-		width: 100%;
-		@include border-radius(0);
-	}
-}
-
-
-//ABOUT
-.img-2{
-	position: relative;
-	@include media-breakpoint-down(sm){
-		height: 300px;
-		margin-bottom: 40px;
-	}
-	.icon{
-		width: 100px;
-		height: 100px;
-		background: $primary;
-		animation: pulse 2s infinite;
-		@include border-radius(50%);
-		span{
-			color: $white;
-			font-size: 24px;
-		}
-	}
-}
-.wrap-about{
-	position: relative;
-	@include media-breakpoint-up(md){
-		padding-left: 6em;
-	}
-	&.wrap-about-2{
-		padding-right: 13%;
-	}
-	.heading{
-		font-weight: 600;
-	}
-	p{
-		strong{
-			color: $black;
-			font-weight: 600;
-		}
-	}
-
-	.heading-section{
-		h2{
-			font-size: 34px;
-		}
-	}
-}
-
-.educ{
-	.icon{
-		width: 70px;
-		span{
-			font-size: 40px;
-			color: $primary;
-		}
-	}
-	div{
-		width: calc(100% - 70px);
-	}
-}
-
-
-.ftco-social{
+.services-section{
 	padding: 0;
-	li{
-		list-style: none;
-		margin-right: 10px;
-	}
 }
-
-
-
-.services-wrap{
-	display: block;
-	width: 100%;
-	margin-bottom: 40px;
+.services{
+	@include transition(.3s);
+	padding: 40px 25px;
+	@include media-breakpoint-down(md){
+		padding: 10px 0;
+	}
 	.icon{
 		line-height: 1.3;
 		position: relative;
-		width: 80px;
-		height: 80px;
-		background: $black;
-		@include border-radius(50%);
-		@include transition(.3s);
 		span{
-			font-size:40px;
-			color: $white;
+			font-size:60px;
+			color: rgba(0,0,0,.2);
+			color: $primary;
 		}
 	}
 	.media-body{
-		width: calc(100% - 80px);
 		h3{
-			font-weight: 500;
-			text-transform: uppercase;
-			letter-spacing: 1px;
 			font-size: 18px;
+			font-weight: 700;
 		}
 	}
-	&:hover{
-		.icon{
+	@include media-breakpoint-up(lg){
+		&.active{
 			background: $primary;
-			span{
-				color: $white;
-			}
-		}
-	}
-}
-
-
-//PROJECT
-.project{
-	width: 100%;
-	height: 400px;
-	margin-bottom: 30px;
-	position: relative;
-	z-index: 0;
-	.overlay{
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		content: '';
-		opacity: 0;
-		background: $black;
-		z-index: -1;
-		@include transition(.3s);
-		@include media-breakpoint-down(sm){
-			opacity: .2;
-		}
-	}
-	.btn-site{
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		bottom: 0;
-		text-decoration: none;
-		z-index: 1;
-		width: 50px;
-		height: 50px;
-		background: rgba(255,255,255,1);
-		@include transition(.6s);
-		opacity: 0;
-		span{
 			color: $black;
-			font-size: 18px;
-		}
-		&:hover{
-			background: $primary;
-		}
-	}
-	.text{
-		width: 100%;
-		z-index: 1;
-		opacity: 0;
-		@include transition(.3s);
-		h3{
-			font-size: 28px;
-			font-weight: 600;
-			a{
-				color: $white;
-			}
-		}
-		span{
-			color: $primary;
-			text-transform: uppercase;
-			letter-spacing: 2px;
-			font-size: 12px;
-			font-weight: 600;
-		}
-		@include media-breakpoint-down(sm){
-			opacity: 1;
-			span{
-				color: rgba(255,255,255,.8);
+			.icon{
+				span{
+					color: $white;
+				}
 			}
 		}
 	}
 	&:hover, &:focus{
-		.overlay{
-			opacity: .8;
-		}
-		.text{
-			opacity: 1;
-		}
-		.btn-site{
-			opacity: 1;
-		}
-	}
-}
-
-
-//STAFF
-.staff{
-	margin-bottom: 60px;
-	.img{
-		width: 200px;
-		height: 200px;
-		@include border-radius(50%);
-		margin: 0 auto;
-	}
-	.text{
-		padding: 0 10px;
-		h3{
-			font-size: 20px;
-			font-weight: 500;
-			margin-bottom: 0;
-		}
-		.position{
-			color: $primary;
-			display: block;
-			text-transform: uppercase;
-			letter-spacing: 2px;
-			font-size: 12px;
-			font-weight: 500;
-		}
-	}
-	.ftco-social{
-		li{
-			display: inline-block;
-		}
-	}
-}
-
-
-.block-7 {
-	margin-bottom: 30px;
-	padding: 30px;
-	-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.03);
-	-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.03);
-	box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.03);
-	background: $white;
-	.heading {
-		font-size: 14px;
-		line-height: 1;
-		margin: 0;
-		padding: 0;
-		margin-bottom: 10px;
-		display: inline-block;
-		text-transform: uppercase;
-	}
-	.heading-2 {
-		font-size: 16px;
-	}
-	.price {
-		margin: 0;
-		padding: 0;
-		display: block;
-		sup {
-			font-size: 20px;
-			top: -.7em; 
-			color: $primary;
-		}
-		.number {
-			font-size: 40px;
-			font-weight: 500;
-			color: $primary;
-		}
-	}
-	.excerpt {
-		margin-bottom: 20px;
-		color: lighten($black,50%);
-	}
-	.label2 {
-		text-transform: uppercase;
-	}
-	.pricing-text {
-		margin-bottom: 0;
-		&, li {
-			padding: 0;
-			margin: 0;
-		}
-		li {
-			list-style: none;
-			margin-bottom: 15px;
-			color: darken(#ccc, 10%);
-			strong {
-				color: $black;
-			}
-		}
-	}
-
-}
-
-//PARTNER
-.ftco-partner{
-	padding: 5em 0;
-	.partner{
-		display: block;
-		padding: 0 20px;
-		@include media-breakpoint-down(md){
-			padding: 0;
-		}
-	}
-}
-
-
-//BLOG ENTRY
-.block-20 {
-	overflow: hidden;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center center;
-	height: 275px;
-	position: relative;
-	display: block;
-}
-.blog-entry{
-	@include media-breakpoint-up(md){
-		margin-bottom: 30px;
-	}
-	@include media-breakpoint-down(sm){
-		margin-bottom: 30px;
-	}
-	.text {
-		position: relative;
-		border-top: 0;
-		border-radius: 2px;
-		.desc{
-			width: 100%;
-		}
-		.heading {
-			font-size: 20px;
-			margin-bottom: 16px;
-			a {
-				color: $black;
-				&:hover, &:focus, &:active {
-					color: $primary;
-				}
-			}
-		}
-		.meta-chat{
-			color: $white;
-		}
-		.read{
-			color: $black;
-			font-size: 14px;
-		}
-	}
-	.meta {
-		> div {
-			display: inline-block;
-			margin-right: 5px;
-			margin-bottom: 0px;
-			font-size: 12px;
-			font-weight: 500;
-			text-transform: uppercase;
-			letter-spacing: 2px;
-			a {
-				color: $black;
-				&:hover {
-					color: $black;
-				}
+		background: $primary;
+		color: $black;
+		.icon{
+			span{
+				color: $white;
 			}
 		}
 	}
 }
-
-//PAGINATION
-.block-27 {
-	ul {
-		padding: 0;
-		margin: 0;
-		li {
-			display: inline-block;
-			margin-bottom: 4px;
-			font-weight: 400;
-			a,span {
-				border: 1px solid lighten($black,90%);
-				text-align: center;
-				display: inline-block;
-				width: 40px;
-				height: 40px;
-				line-height: 40px;
-				border-radius: 50%;
-				color: $black;
-			}
-			&.active {
-				a, span {
-					background: $black;
-					color: $white;
-					border: 1px solid transparent;
-				}
-			}
-		}
-	}
-}
-
-
-
-
-
-
-
-
-
 
 
 
 
 // USEFUL CODE
 .aside-stretch{
-	background: $black;
-	position: relative;
+	background: lighten($primary,10%);
 	&:after{
 		position: absolute;
 		top: 0;
-		right: 100%;
+		right: 0%;
 		bottom: 0;
 		content: '';
 		width: 360%;
-		background: $black;
+		background: lighten($primary,10%);
+		border: 1px solid red;
+		z-index: -1;
+		// background: #333644;
 	}
 	@include media-breakpoint-down(sm){
 		background: transparent;
@@ -1195,9 +1255,8 @@ h1, h2, h3, h4, h5,
 	background: $white!important;
 	color: $black!important;
 	font-size: 18px;
-	border-radius: 0px;
+	border-radius: 5px;
 	box-shadow: none!important;
-	border: 1px solid lighten($black,90%);
 	&:focus, &:active {
 		border-color: $black;
 	}
@@ -1212,7 +1271,25 @@ textarea.form-control {
 }
 
 .bg-primary {
-	background: $primary !important;
+	background: $primary!important;
+}
+
+
+//ABOUT
+.media-custom{
+	background: $white;
+	.media-body{
+		.name{
+			font-weight: 500;
+			font-size: 16px;
+			margin-bottom: 0;
+			color: $primary;
+		}
+		.position{
+			font-size: 13px;
+			color: lighten($black, 85%);
+		}
+	}
 }
 
 
@@ -1231,8 +1308,18 @@ textarea.form-control {
 
 
 .ftco-section {
-	padding: 6em 0;
+	padding: 7em 0;
 	position: relative;
+	@include media-breakpoint-down(sm){
+		padding: 6em 0;
+	}
+}
+
+.ftco-no-pt{
+	padding-top: 0 !important;
+}
+.ftco-no-pb{
+	padding-bottom: 0 !important;
 }
 
 .ftco-bg-dark {
@@ -1240,10 +1327,165 @@ textarea.form-control {
 }
 
 
+//TEAM
+.team{
+	width: 100%;
+	display: block;
+	@include transition(.3s);
+	@include media-breakpoint-down(md){
+		margin-bottom: 30px;
+	}
+	&.team-2{
+		h2{
+			font-size: 24px !important;
+		}
+	}
+	.img{
+		width: 200px;
+		height: 200px;
+		margin: 0 auto;
+		margin-bottom: 20px;
+		position: relative;
+		overflow: hidden;
+		@include border-radius(50%);
+		&:after{
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			content: '';
+			background: $primary;
+			opacity: 0;
+			@include transition(.3s);
+		}
+	}
+	h2{
+		font-size: 16px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		margin-bottom: 0px;
+	}
+	.position{
+		font-size: 14px;
+		text-transform: uppercase;
+		font-weight: 600;
+	}
+	&:hover, &:focus{
+		margin-top: -10px;
+		.img{
+			&:after{
+				opacity: .8;
+			}
+		}
+	}
+}
+.ftco-team{
+	position: relative;
+	.overlay{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		content: '';
+		opacity: .7;
+		background: $darken;
+	}
+	.owl-carousel{
+		margin: 0;
+	}
+	.owl-carousel .owl-stage-outer{
+		padding-top: 1em;
+		padding-bottom: 2em;
+		position: relative;
+	}
+	.owl-nav {
+		position: absolute;
+		bottom: 60px !important;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		@include media-breakpoint-down(md){
+			display: none;
+		}
+		.owl-prev,
+		.owl-next {
+			position: absolute;
+			width: 60px;
+			height: 60px;
+			background: $white !important;
+			@include transition(.7s);
+			span {
+				&:before {
+					font-size: 20px;
+					margin-top: 7px;
+					color: $black;
+				}
+			}
+			opacity: 1;
+		}
+		.owl-prev {
+			top: 0 !important;
+			right: 0 !important;
+			@include media-breakpoint-up(lg){
+				right: 61px !important;
+			}
+			&:hover, &:focus{
+				background: $black !important;
+				outline: none !important;
+				span {
+					&:before {
+						font-size: 20px;
+						margin-top: 7px;
+						color: $white;
+					}
+				}
+			}
+		}
+		.owl-next {
+			top: 0 !important;
+			right: 0 !important;
+			@include media-breakpoint-up(lg){
+				right: 0 !important;
+			}
+			&:hover, &:focus{
+				background: $black !important;
+				outline: none !important;
+				span {
+					&:before {
+						font-size: 24px;
+						margin-top: 7px;
+						color: $white;
+					}
+				}
+			}
+		}
+	}
+	.owl-dots {
+		text-align: center;
+		.owl-dot {
+			width: 10px;
+			height: 10px;
+			margin: 5px;
+			border-radius: 50%;
+			background: rgba(0,0,0,0) !important;
+			border: 1px solid $primary;
+			&.active {
+				background: $primary !important;
+			}
+		}
+	}
+}
+
+
+
 .ftco-footer {
-	font-size: 14px;
-	background: #141313;
-	padding: 6em 0;
+	font-size: 16px;
+	background: darken($secondary,23%);
+	padding: 7em 0;
+	z-index: 0;
 	.ftco-footer-logo {
 		text-transform: uppercase;
 		letter-spacing: .1em;
@@ -1254,13 +1496,21 @@ textarea.form-control {
 			color: $white;
 			margin-bottom: 40px;
 			font-size: 18px;
-			font-weight: 400;
+			font-weight: 700;
+			&.logo{
+				font-family: $font-tertiary;
+			}
 		}
 		ul{
 			li{
+				font-weight: 500;
 				a{
+					color: rgba(255,255,255,.7);
 					span{
 						color: $white;
+					}
+					&:hover{
+						color: $primary;
 					}
 				}
 			}
@@ -1287,17 +1537,6 @@ textarea.form-control {
 		font-size: 17px;
 		font-weight: 400;
 		color: $black;
-	}
-
-	.categories{
-		li{
-			border-bottom: 1px solid rgba(255,255,255,.1);
-			a{
-				span{
-					color: rgba(255,255,255,.5) !important;
-				}
-			}
-		}
 	}
 }
 
@@ -1347,7 +1586,43 @@ textarea.form-control {
 		}
 	}
 }
+.ftco-media {
+	background: $white;
+	border-radius: 0px;
+	.heading {
+		font-weight: normal;
+	}
+	&.ftco-media-shadow {
+		padding: 40px;
+		background: $white;
+		box-shadow: 0 10px 50px -15px rgba(0,0,0,.3);
+		transition: .2s all ease;
+		position: relative;
+		top: 0;
+		&:hover, &:focus {
+			top: -3px;
+			box-shadow: 0 10px 70px -15px rgba(0,0,0,.3);
+		}
+	}
+	.icon {
+		font-size: 50px;
+		display: block;
+		color: $primary;
+	}
+	&.text-center {
+		.ftco-icon {
+			margin: 0 auto;
+		}
+	}
+}
+.ftco-overflow-hidden {
+	overflow: hidden;
+}
 
+.padding-top-bottom {
+	padding-top: 120px;
+	padding-bottom: 120px;
+}
 
 // Map
 
@@ -1387,41 +1662,47 @@ textarea.form-control {
 }
 
 .heading-section{
+	position: relative;
+	h1.big{
+		position: absolute;
+		top: -80px;
+		left: 0;
+		right: 0;
+		font-family: $font-tertiary;
+		color: rgba(0,0,0,.05);
+		color: #f7f5f6;
+		font-size: 120px;
+		z-index: -1;
+		&.big-2{
+			color: $white;
+		}
+		@include media-breakpoint-down(lg){
+			display: none;
+		}
+	}
 	.subheading{
-		font-weight: 600;
-		font-size: 13px;
+		font-size: 12px;
 		display: block;
-		margin-bottom: 0;
+		margin-bottom: 5px;
 		text-transform: uppercase;
-		letter-spacing: 2px;
 		color: $primary;
+		font-weight: 700;
+		letter-spacing: 2px;
 	}
 	h2{
-		font-size: 50px;
-		font-weight: 700;
+		font-size: 40px;
+		font-weight: 600;
+		line-height: 1.1;
+		span{
+			font-weight: 400;
+		}
 		@include media-breakpoint-down(sm){
 			font-size: 28px;
 		}
 	}
-	h3{
-		font-size: 20px;
-		color: $primary;
-	}
-	&.heading-section-with-line{
-		position: relative;
-		&:after{
-			position: absolute;
-			bottom: -20px;
-			left: 0;
-			width: 100%;
-			height: 1px;
-			content: '';
-			background: $primary;
-		}
-	}
 	&.heading-section-white{
 		.subheading{
-			color: rgba(255,255,255,.7);
+			color: rgba(255,255,255,.9);
 		}
 		h2{
 			font-size: 40px;
@@ -1434,12 +1715,9 @@ textarea.form-control {
 }
 
 //COVER BG
-.hotel-img,
 .img,
 .blog-img,
-.about-img,
 .user-img{
-
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -1453,76 +1731,109 @@ textarea.form-control {
 .testimony-section{
 	position: relative;
 	background: $primary;
+	.testimony-img{
+		display: block;
+		width: 100%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: top center;
+		@include media-breakpoint-up(lg){
+			margin-top: -50px;
+			margin-right: -40px;
+		}
+	}
+	.overlay{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		content: '';
+		opacity: .7;
+		background: $darken;
+		// @include gradient-background();
+	}
 	.owl-carousel{
 		margin: 0;
 	}
 	.owl-carousel .owl-stage-outer{
 		padding-top: 0;
-		padding-bottom: 2em;
+		padding-bottom: 0;
 		position: relative;
 	}
 	.owl-nav {
 		position: absolute;
-		top: 100%;
-		width: 100%;
+		bottom: 60px !important;
+		left: 0;
+		right: 0;
+		// max-width: 1200px;
+		margin: 0 auto;
+		@include media-breakpoint-down(md){
+			display: none;
+		}
 		.owl-prev,
 		.owl-next {
 			position: absolute;
-			transform: translateY(-50%);
-			margin-top: -10px;
-			outline: none !important;
-			@include transition(.3s);
+			width: 60px;
+			height: 60px;
+			background: $white !important;
+			@include transition(.7s);
 			span {
 				&:before {
-					font-size: 30px;
-					color: rgba(0,0,0,.2);
-					@include transition(.3s);
+					font-size: 20px;
+					margin-top: 7px;
+					color: $black;
 				}
 			}
-			&:hover,&:focus{
-				span{
-					&:before{
-						color: $black;
+			opacity: 1;
+		}
+		.owl-prev {
+			top: 0 !important;
+			right: 0 !important;
+			@include media-breakpoint-up(lg){
+				right: 61px !important;
+			}
+			&:hover, &:focus{
+				background: $black !important;
+				outline: none !important;
+				span {
+					&:before {
+						font-size: 20px;
+						margin-top: 7px;
+						color: $white;
 					}
 				}
 			}
-			opacity: 0;
-		}
-		.owl-prev {
-			left: 50%;
-			margin-left: -80px;
 		}
 		.owl-next {
-			right: 50%;
-			margin-right: -80px;
-		}
-	}
-	&:hover{
-		.owl-nav{
-			.owl-prev,
-			.owl-next{
-				opacity: 1;
+			top: 0 !important;
+			right: 0 !important;
+			@include media-breakpoint-up(lg){
+				right: 0 !important;
 			}
-			.owl-prev {
-				left: 50%;
-				margin-left: -80px;
-			}
-			.owl-next {
-				right: 50%;
-				margin-right: -80px;
+			&:hover, &:focus{
+				background: $black !important;
+				outline: none !important;
+				span {
+					&:before {
+						font-size: 24px;
+						margin-top: 7px;
+						color: $white;
+					}
+				}
 			}
 		}
 	}
 	.owl-dots {
-		text-align: center;
+		text-align: left;
 		.owl-dot {
 			width: 10px;
 			height: 10px;
 			margin: 5px;
 			border-radius: 50%;
-			background: rgba(255,255,255,.4);
+			background: rgba(0,0,0,.1);
 			&.active {
-				background: $white;
+				background: $primary;
 			}
 		}
 	}
@@ -1530,36 +1841,52 @@ textarea.form-control {
 .testimony-wrap{
 	display: block;
 	position: relative;
-	background: rgba(255,255,255,.2);
-	color: rgba(0,0,0,.8);
+	// color: rgba(255,255,255,.8);
+	font-size: 20px;
 	.user-img{
-		width: 100px;
-		height: 100px;
+		width: 80px;
+		height: 80px;
 		border-radius: (50%);
 		position: relative;
-		margin-top: -75px;
-		margin: 0 auto;
+		background-position: top center;
 		.quote{
 			position: absolute;
 			bottom: -10px;
 			right: 0;
 			width: 40px;
 			height: 40px;
-			background: $white;
+			background: $primary;
 			@include border-radius(50%);
 			i{
-				color: $primary;
+				color: $white;
 			}
 		}
 	}
+	.text{
+		@include border-radius(4px);
+	}
+	p{
+		// font-size: 20px;
+	}
 	.name{
 		font-weight: 400;
-		font-size: 18px;
 		margin-bottom: 0;
 		color: $black;
+		font-weight: 700;
+		font-size: 20px;
 	}
 	.position{
-		font-size: 13px;
+		font-size: 14px;
+		color: rgba(0,0,0,.3);
+		text-transform: uppercase;
+		letter-spacing: 1px;
+	}
+}
+
+.about-image{
+	@include media-breakpoint-down(sm){
+		height: 400px;
+		margin-bottom: 30px;
 	}
 }
 
@@ -1606,55 +1933,126 @@ textarea.form-control {
 		right: 0;
 		content: '';
 		z-index: -1;
-		opacity: .7;
+		opacity: 0;
 		background: $black;
 	}
 }
 .ftco-counter {
-	padding: 6em 0;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: top center;
+	// padding: 6em 0;
 	@include media-breakpoint-down(lg){
 		background-position: center center !important;
 	}
-	.icon{
-		span{
-		}
-	}
-	.text{
-		strong.number{
-			font-weight: 500;
-			font-size: 40px;
-			color: $white;
-			display: block;
-		}
-		span{
-			display: block;
-			font-size: 16px;
-			color: rgba(255,255,255,.8);
-		}
-	}
-	.counter-wrap{
-		@include media-breakpoint-down(sm){
-			margin-bottom: 20px;
-		}
-	}
-	.ftco-number {
+	.img{
 		display: block;
-		font-size: 72px;
-		font-weight: bold;
-		color: $primary;
+		width: 100%;
+		@include media-breakpoint-down(md){
+			height: 400px;
+			background-position: top center !important;
+		}
 	}
-	.ftco-label {
-		font-size: 12px;
-		text-transform: uppercase;
-		letter-spacing: .1em;
+	.block-18{
+	}
+	.heading-section{
+		h2{
+			span{
+				font-weight: 600;
+				color: $primary;
+			}
+		}
 	}
 }
 
-
-
+//blocks 
+.block-20 {
+	overflow: hidden;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 270px;
+	&:after{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		content: '';
+		opacity: .3;
+		background: rgba(0,0,0,0);
+		background: -moz-linear-gradient(top, rgba(0,0,0,0) 17%, rgba(0,0,0,0) 27%, rgba(0,0,0,1) 100%);
+		background: -webkit-gradient(left top, left bottom, color-stop(17%, rgba(0,0,0,0)), color-stop(27%, rgba(0,0,0,0)), color-stop(100%, rgba(0,0,0,1)));
+		background: -webkit-linear-gradient(top, rgba(0,0,0,0) 17%, rgba(0,0,0,0) 27%, rgba(0,0,0,1) 100%);
+		background: -o-linear-gradient(top, rgba(0,0,0,0) 17%, rgba(0,0,0,0) 27%, rgba(0,0,0,1) 100%);
+		background: -ms-linear-gradient(top, rgba(0,0,0,0) 17%, rgba(0,0,0,0) 27%, rgba(0,0,0,1) 100%);
+		background: linear-gradient(to bottom, rgba(0,0,0,0) 17%, rgba(0,0,0,0) 27%, rgba(0,0,0,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 );
+	}
+}
+.blog-entry{
+	overflow: hidden;
+	@include media-breakpoint-up(md){
+		margin-bottom: 30px;
+	}
+	@include media-breakpoint-down(sm){
+		margin-bottom: 30px;
+	}
+	.text {
+		position: relative;
+		width: 100%;
+		margin: 0 auto;
+		.heading {
+			font-size: 20px;
+			margin-bottom: 16px;
+			font-weight: 700;
+			a {
+				color: $black;
+				&:hover, &:focus, &:active {
+					color: $primary;
+				}
+			}
+		}
+	}
+	.meta {
+		> div {
+			display: inline-block;
+			margin-right: 5px;
+			margin-bottom: 0;
+			font-size: 14px;
+			a {
+				color: lighten($black, 50%);
+				font-size: 15px;
+				&:hover {
+					color: lighten($black, 40%);
+				}
+			}
+		}
+	}
+	.topp{
+		position: absolute;
+		top: -5em;
+		left: 1em;
+	}
+	.one{
+		width: 60px;
+	}
+	.two{
+		width: calc(100% - 60px);
+	}
+	span.day{
+		font-size: 50px;
+		font-weight: 300;
+		color: $primary;
+		line-height: 1;
+	}
+	span.yr,span.mos{
+		display: block;
+		font-size: 13px;
+		line-height: 1.4;
+		color: rgba(255,255,255,.8);
+	}
+}
 
 
 .block-23 {
@@ -1685,26 +2083,75 @@ textarea.form-control {
 	}
 }
 
-//### .block-4
-.contact-section {
-	.contact-info{
-		.con{
-			background: $primary;
-			width: 100%;
-			@include border-radius(5px);
-		}
-		p{
-			a{
-				color: lighten($black,10%);
-			}
-			span{
-				font-weight: 500;
+.block-27 {
+	ul {
+		padding: 0;
+		margin: 0;
+		li {
+			display: inline-block;
+			margin-bottom: 4px;
+			font-weight: 400;
+			a,span {
 				color: $black;
+				text-align: center;
+				display: inline-block;
+				width: 40px;
+				height: 40px;
+				line-height: 40px;
+				border-radius: 50%;
+				border: 1px solid lighten($black,80%);
+			}
+			&.active {
+				a, span {
+					background: $primary;
+					color: $black;
+					border: 1px solid transparent;
+				}
 			}
 		}
 	}
 }
+
+
+
+.contact-section {
+	.contact-info{
+		p{
+			color: rgba(0,0,0,.8);
+			font-weight: 700;
+			a{
+				color: rgba(0,0,0,.8);
+			}
+			span{}
+		}
+	}
+	.box{
+		width: 100%;
+		display: block;
+		// background: $primary;
+		.icon{
+			width: 100px;
+			height: 100px;
+			background: $white;
+			margin: 0 auto;
+			margin-bottom: 2em;
+			@include border-radius(50%);
+			span{
+				color: $black;
+				font-size: 30px;
+			}
+		}
+		h3{
+			font-size: 18px;
+			font-weight: 900;
+		}
+	}
+	.contact-form{
+		width: 100%;
+	}
+}
 .block-9 {
+
 	.form-control {
 		outline: none!important;
 		box-shadow: none!important;
@@ -1724,9 +2171,9 @@ textarea.form-control {
 	}
 	.text {
 		width: calc(100% - 100px);
-		.heading {
+		.heading-1 {
 			font-size: 18px;
-			font-weight: 300;
+			font-weight: 400;
 			a {
 				color: $black;
 				&:hover, &:active, &:focus {
@@ -1747,7 +2194,6 @@ textarea.form-control {
 	}
 }
 
-
 /* Blog*/
 .post-info {
 	font-size: 12px;
@@ -1767,7 +2213,6 @@ textarea.form-control {
 }
 
 .tagcloud {
-	padding: 0;
 	a {
 		text-transform: uppercase;
 		display: inline-block;
@@ -1843,12 +2288,11 @@ textarea.form-control {
 }
 
 .search-form {
-	background: lighten($black, 98%);
+	background: lighten($black, 95%);
 	padding: 10px;
 
 	.form-group {
 		position: relative;
-		margin-bottom: 0;
 		input {
 			padding-right: 50px;
 			font-size: 14px;
@@ -1862,79 +2306,30 @@ textarea.form-control {
 	}
 }
 
-.subs-wrap{
-	background: $primary !important;
-	display: block;
-	width: 100%;
-	color: rgba(255,255,255,.7);
-	h3{
-		color: $white;
-		font-size: 30px !important;
-	}
-}
-.subscribe-form{
-	.form-group {
-		position: relative;
-		margin-bottom: 0;
-		@include border-radius(0);
-		input {
-			background: transparent !important;
-			border: 1px solid transparent;
-			color: rgba(255,255,255,.7) !important;
-			font-size: 16px;
-			@include border-radius(0);
-			&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-			  color: rgba(255,255,255,.7) !important;
-			}
-			&::-moz-placeholder { /* Firefox 19+ */
-			  color: rgba(255,255,255,.7) !important;
-			}
-			&:-ms-input-placeholder { /* IE 10+ */
-			  color: rgba(255,255,255,.7) !important;
-			}
-			&:-moz-placeholder { /* Firefox 18- */
-			  color: rgba(255,255,255,.7) !important;
-			}
-		}
-		.form-control{
-			bordeR: 1px solid rgba(255,255,255,.4);
-		}
-		.submit{
-			color: $black !important;
-			display: block;
-			width: 100%;
-			height: 52px;
-			font-size: 16px;
-			background: $white !important;
-			@include border-radius(0);
-			&:hover{
-				cursor: pointer;
-			}
-		}
-	}
-	.icon {
-		position: absolute;
-		top: 50%;
-		right: 20px;
-		transform: translateY(-50%);
-		color: rgba(255,255,255,.8);
-	}
-}
 
 // sidebar
+
 .sidebar-box {
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 	padding: 25px;
 	font-size: 15px;
 	width: 100%;
+	
+	background: $white;
+	*:last-child {
+		margin-bottom: 0;
+	}
 	h3 {
-		font-size: 20px;
-		font-weight: 600;
-		margin-bottom: 25px;
+		font-size: 18px;
+		margin-bottom: 15px;
+	}
+	.heading-2{
+		font-size: 24px;
 	}
 }
 
 .categories, .sidelink {
+	margin: 0;
 	padding: 0;
 	li {
 		position: relative;
@@ -1949,7 +2344,7 @@ textarea.form-control {
 		}
 		a {
 			display: block;
-			color: $black;
+			color: lighten($black,10%);
 			span {
 				position: absolute;
 				right: 0;
