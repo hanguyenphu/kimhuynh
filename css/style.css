@@ -73,6 +73,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5rem; }
 
 p {
+  width: 75%;
   margin-top: 0;
   margin-bottom: 1rem; }
 
@@ -879,10 +880,11 @@ pre {
     flex: 0 0 16.66667%;
     max-width: 16.66667%; }
   .col-md-3 {
+    margin-bottom: 35px;
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 25%;
-    flex: 0 0 25%;
-    max-width: 25%; }
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%; }
   .col-md-4 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 33.33333%;
@@ -8996,6 +8998,7 @@ h1, h2, h3, h4, h5,
     transform: scale(1.3); }
 
 .pricing-entry {
+  height: 100%;
 	background-color: #FFE9EB !important;
   border: 1px solid #f9d0d1;
   position: relative;
@@ -9022,21 +9025,30 @@ h1, h2, h3, h4, h5,
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease; }
   .pricing-entry p .price {
-    font-weight: 900;
-    font-size: 28px;
+    font-weight: 700;
+    font-size: 15px;
+    float:right;
     color: #563b4c;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     -webkit-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease; }
+.pricing-entry p .serviceName{
+  text-align: left;
+  float:left;
+}
+
   .pricing-entry p .per {
-    font-size: 12px; }
+    font-size: 12px;
+    float:right; }
   .pricing-entry ul {
     margin: 0;
     padding: 0; }
     .pricing-entry ul li {
+      width: 90%;
       list-style: none;
+      display:inline-flex;
       padding: 10px 20px; }
       .pricing-entry ul li:nth-child(odd) {
         background: #fafafa; }
@@ -9556,7 +9568,7 @@ textarea.form-control {
 
 .testimony-section {
   position: relative;
-  background: #f18c8e; }
+  background: #A9E5E5; }
   .testimony-section .testimony-img {
     display: block;
     width: 100%;
